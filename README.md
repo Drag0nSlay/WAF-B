@@ -27,7 +27,7 @@ This project provides a set of tools to bypass web application firewalls (WAFs) 
 
 ## Requirements
 
-- Python 3.x
+- Python 3.12.2
 - Requests library
 - Scapy library
 - Paramiko library
