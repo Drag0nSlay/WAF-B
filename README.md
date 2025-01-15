@@ -1,4 +1,5 @@
 # WAF-B 
+![WAF-B](WAF-B.jpg)
 ## Web Application Firewall Bypass Tool
 
 This project provides a set of tools to bypass web application firewalls (WAFs) and other security measures. The tools are designed to help penetration testers, ethical hackers, and security researchers to assess the security of web applications and identify potential vulnerabilities.
