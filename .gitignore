@@ -1,0 +1,38 @@
+# Ignore all .log files
+*.log
+
+# Ignore all .pyc files
+*.pyc
+
+# Ignore all .class files
+*.class
+
+# Ignore all .DS_Store files (macOS specific)
+.DS_Store
+
+# Ignore all .idea directories (IntelliJ IDEA project files)
+.idea/
+
+# Ignore all .vscode directories (Visual Studio Code project files)
+.vscode/
+
+# Ignore all __pycache__ directories
+__pycache__/
+
+# Ignore all .env files
+.env
+
+# Ignore all .envrc files (direnv configuration files)
+.envrc
+
+# Ignore all .DS_Store files (macOS specific)
+.DS_Store
+
+# Ignore all .idea directories (IntelliJ IDEA project files)
+.idea/
+
+# Ignore all .vscode directories (Visual Studio Code project files)
+.vscode/
+
+# Ignore all __pycache__ directories
+__pycache__/
