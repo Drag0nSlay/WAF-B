@@ -7,6 +7,7 @@ from scapy.all import sniff
 import pyperclip
 import base64
 import urllib.parse
+import requests
 
 def display_logo():
     logo = r"""
@@ -145,13 +146,41 @@ def handle_hpp():
     is_vulnerable = manipulate_http_parameters(url, original_params, manipulated_params)
     print(f"HTTP parameter pollution detected: {is_vulnerable}")
 
+def bypass_waf_test(url, payloads, headers=None):
+    """
+    Test if payloads bypass WAF using different HTTP methods and headers.
+    
+    :param url: The target URL.
+    :param payloads: List of payloads to test.
+    :param headers: Optional headers to manipulate.
+    
+    :return: None
+    """
+    for payload in payloads:
+        print(f"\nTesting GET with payload: {payload}")
+        response = requests.get(url, params={'input': payload}, headers=headers)
+        
+        if "error" not in response.text and "403" not in str(response.status_code) and "blocked" not in response.text.lower():
+            print(f"Payload '{payload}' bypassed the WAF (GET Method) - Response Status: {response.status_code}")
+        else:
+            print(f"Payload '{payload}' blocked by WAF (GET Method) - Response Status: {response.status_code}")
+        
+        print(f"\nTesting POST with payload: {payload}")
+        response = requests.post(url, data={'input': payload}, headers=headers)
+        
+        if "error" not in response.text and "403" not in str(response.status_code) and "blocked" not in response.text.lower():
+            print(f"Payload '{payload}' bypassed the WAF (POST Method) - Response Status: {response.status_code}")
+        else:
+            print(f"Payload '{payload}' blocked by WAF (POST Method) - Response Status: {response.status_code}")
+
+# Main Functionality to Choose Between Tools
 def main():
     display_logo()
 
     print("Select an option:")
-    print("\tD - Decoding\n\tE - Exploitation\n\tA - Anomalous Traffic Detection\n\tT - SSH Tunneling\n\tH - HTTP Parameter Pollution")
+    print("\tD - Decoding\n\tE - Exploitation\n\tA - Anomalous Traffic Detection\n\tT - SSH Tunneling\n\tH - HTTP Parameter Pollution\n\tW - WAF Bypass Testing")
 
-    choice = input("Enter your choice (D/E/A/T/H): ").strip().upper()
+    choice = input("Enter your choice (D/E/A/T/H/W): ").strip().upper()
 
     if choice == "D":
         handle_decoding()
@@ -163,6 +192,28 @@ def main():
         handle_ssh_tunneling()
     elif choice == "H":
         handle_hpp()
+    elif choice == "W":
+        print("Enter the target URL for WAF bypass testing (e.g., http://example.com):")
+        url = input().strip()
+        print("Enter the payloads you want to test (press Enter to stop):")
+        payloads = []
+        while True:
+            payload = input("Enter Payload: ").strip()
+            if not payload:
+                break
+            payloads.append(payload)
+
+        print("Enter custom headers (key=value), leave blank to skip:")
+        headers = {}
+        while True:
+            key = input("Header Key (or press Enter to stop): ").strip()
+            if not key:
+                break
+            value = input(f"Value for {key}: ").strip()
+            headers[key] = value
+
+        bypass_waf_test(url, payloads, headers)
+
     else:
         print("Invalid choice. Exiting.")
 
