@@ -48,7 +48,7 @@ This project provides a set of tools to bypass web application firewalls (WAFs) 
 1. Navigate to the project directory:<br>
 `cd WAF-B`
 2. Run the script:<br>
-`python main.py`
+`python WAF-B.py`
 
 3. The script will execute the different functionalities and provide output based on the results.
 
