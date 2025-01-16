@@ -33,13 +33,15 @@ This project provides a set of tools to bypass web application firewalls (WAFs) 
 - Scapy library
 - Paramiko library
 - pyperclip
+- base64
+- urllib.parse
 
 ## Installation
 
 1. Clone the repository:<br>
 `https://github.com/Drag0nSlay/WAF-B.git`
 2. Install the required libraries:<br>
-`pip install requests scapy paramiko pyperclip`
+`pip install requests scapy paramiko pyperclip urllib.parse`
 
 ## Usage
 
