@@ -1,27 +1,39 @@
-# Ignore all .log files
-*.log
-
-# Ignore all .pyc files
+# Python
 *.pyc
-
-# Ignore all .class files
-*.class
-
-# Ignore all .DS_Store files (macOS specific)
-.DS_Store
-
-# Ignore all .idea directories (IntelliJ IDEA project files)
-.idea/
-
-# Ignore all .vscode directories (Visual Studio Code project files)
-.vscode/
-
-# Ignore all __pycache__ directories
+*.pyo
 __pycache__/
 
-# Ignore all .env files
-.env
+# Virtual Environment
+venv/
+.env/
 
-# Ignore all .envrc files (direnv configuration files)
-.envrc
-!. WAF-B.jpg
+# Configuration files
+.coverage
+.tox/
+.nox/
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebooks
+*.ipynb_checkpoints
+
+# IDE/editor files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Log files
+*.log
+
+# OS-specific files
+Thumbs.db
+ehthumbs.db
+.DS_Store
+
+# Sensitive data
+.env
+.env.*
+*.key
+*.pem
+*.secret
